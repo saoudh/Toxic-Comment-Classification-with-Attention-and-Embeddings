@@ -5,40 +5,39 @@ from save_embeddings_to_bin import *
 
 def generate_embeddings(config,vocabulary):
     print("generate_embeddings..")
-    glove_filename = "glove.6B.{}d.txt".format(config.embed_size)
+    glove_filename = "glove.6B.{}d.vocab".format(config.embed_size)
     file_path=os.path.join(config.glove_dir_path,glove_filename)
     print("file path glove=",file_path)
-    if os.path.exists(file_path):
-        with open(file_path, 'r') as f:
-            wv, index2word, word2index = read_embeddings(file_path)
-            word_vocab = []
+    if os.path.isfile(file_path):
+        wv, index2word, word2index = read_embeddings(file_path)
+        word_vocab = []
 
-            embedding_matrix = []
-            print("index2word.shape=",np.shape(index2word))
-            print("word2index.shape=", np.shape(index2word))
-            print("vocabulary.shape=",np.shape(vocabulary))
+        embedding_matrix = []
+        print("index2word.shape=",np.shape(index2word))
+        print("word2index.shape=", np.shape(index2word))
+        print("vocabulary.shape=",np.shape(vocabulary))
 
-            print("index2word[:10]=",index2word[:10])
-            print("word2index=", index2word[:10])
-            print("vocabulary[:10]=",vocabulary[:10])
-            # word is a tuple of (word,nr-of-occurrence)
-            for i,word in enumerate(vocabulary):
-                if word in index2word:
-                    print("word=", word, "word.index=", index2word.index(word))
+        print("index2word[:10]=",index2word[:10])
+        print("word2index=", index2word[:10])
+        print("vocabulary[:10]=",vocabulary[:10])
+        # word is a tuple of (word,nr-of-occurrence)
+        for i,word in enumerate(vocabulary):
+            if word in index2word:
+                print("word=", word, "word.index=", index2word.index(word))
 
-                    if i%50==0:
-                        print("i=",i,"-word=",word)
-                    word_vocab.append(word)
-                    embedding_matrix.append(wv[index2word.index(word)])
-            '''for emb_word,vector in zip(index2word,wv):
-                print("emb_word: ",emb_word)
-                # if word from glove exists in covered vocabulary
-                if emb_word in vocabulary:
-                    word_vocab.append(emb_word)
-                    embedding_matrix.append(vector)
-            '''
-            print("embedding_matrix.shape",np.shape(embedding_matrix))
-            print("embedding_matrix[:3]=",np.shape(embedding_matrix))
+                if i%50==0:
+                    print("i=",i,"-word=",word)
+                word_vocab.append(word)
+                embedding_matrix.append(wv[index2word.index(word)])
+        '''for emb_word,vector in zip(index2word,wv):
+            print("emb_word: ",emb_word)
+            # if word from glove exists in covered vocabulary
+            if emb_word in vocabulary:
+                word_vocab.append(emb_word)
+                embedding_matrix.append(vector)
+        '''
+        print("embedding_matrix.shape",np.shape(embedding_matrix))
+        print("embedding_matrix[:3]=",np.shape(embedding_matrix))
 
         return word_vocab,embedding_matrix
     else:
