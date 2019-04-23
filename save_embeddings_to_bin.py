@@ -62,6 +62,7 @@ def read_embeddings(embeddings_path):
     print("read_embeddings")
     # if filepath has an extension, then remove it
     embeddings_path = embeddings_path.replace('.txt', '')
+    embeddings_path = embeddings_path.replace('.vocab', '')
     with codecs.open(embeddings_path + '.vocab', 'r', 'utf-8') as f_in:
         index2word = [line.strip() for line in f_in]
 
