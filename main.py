@@ -176,9 +176,9 @@ def _run(config):
 
 flags = tf.app.flags
 # model parameters
-flags.DEFINE_integer("max_features", 1000, "number of words in vocabulary")
+flags.DEFINE_integer("max_features", 30000, "number of words in vocabulary")
 flags.DEFINE_integer("embed_size", 100, "embedding size of a single token")
-flags.DEFINE_integer("mini_batch_size", 100, "mini batch size")
+flags.DEFINE_integer("mini_batch_size", 40, "mini batch size")
 flags.DEFINE_integer("vocab_size", 1, "size of vocab, will be overwritten in code after generating vocab.")
 flags.DEFINE_integer("maxlen", 200, "max number of words/tokens in sentence")
 flags.DEFINE_integer("lstm_shape", 60, "hidden size of LSTM-Cell")

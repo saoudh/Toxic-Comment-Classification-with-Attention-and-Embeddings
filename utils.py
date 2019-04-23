@@ -41,7 +41,7 @@ def generate_embeddings(config,vocabulary):
 
         return word_vocab,embedding_matrix
     else:
-        raise Exception("no glove file at{} available!".format(file_path))
+        raise Exception("no glove.vocab file at{} available! Probably you have to create one!".format(file_path))
 
 
 def generate_vocabulary(list_sentences,config):
