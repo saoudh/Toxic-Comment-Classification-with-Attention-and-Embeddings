@@ -143,8 +143,10 @@ def save_np_array_to_bin_file(data_arr, config,filename):
         os.makedirs(config.log_dir_path, exist_ok=True)
     np.save(filename, np.reshape(data_arr, [-1]))
 
-def load_np_array_from_bin_file(data_arr, config,filename):
-    filename = config.log_dir_path + filename
+def load_np_array_from_bin_file(config,filename):
+    import os
+    filename = os.path.join(config.log_dir_path, filename)
+    print("file:",filename)
     # for multiple experiments runs: as long as the log-filename already exists,
     # increment the ending of the filename
     if os.path.isfile(filename):
