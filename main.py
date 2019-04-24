@@ -159,7 +159,8 @@ def _run(config):
         sess = load_model_from_file(sess, config.model_file_path)
     else:
         sess.run(init)
-    model.assign_embeddings(sess,embeddings)
+    if config.use_glove_embeddings:
+        model.assign_embeddings(sess,embeddings)
     print("1 X_t.type=", type(padded_sequences), " - y.type=", type(y))
     print("1 X_t.shape=", np.shape(padded_sequences), " - y.shape=", np.shape(y))
     print("1 X_t[0][:10]=", padded_sequences[:10][:10], " - y[0]=", y[:10])

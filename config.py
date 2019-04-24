@@ -9,7 +9,7 @@ flags.DEFINE_integer("vocab_size", 1, "size of vocab, will be overwritten in cod
 flags.DEFINE_integer("maxlen", 200, "max number of words/tokens in sentence")
 flags.DEFINE_integer("lstm_shape", 60, "hidden size of LSTM-Cell")
 
-flags.DEFINE_boolean("use_glove_embeddings", True, "whether using glove embeddings [True|False]")
+flags.DEFINE_boolean("use_glove_embeddings", False, "whether using glove embeddings [True|False]")
 flags.DEFINE_boolean("use_attention", True, "whether using attention [True|False]")
 flags.DEFINE_boolean("load_model", False, "loading model from file [True|False]")
 
