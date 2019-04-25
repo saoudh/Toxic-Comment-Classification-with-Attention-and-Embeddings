@@ -112,10 +112,8 @@ class Model:
         # Define the model
 
         # looks up IDs in a single tensor or a list of tensors in params
-        if self.config.use_glove_embeddings:
-            embedded_word_ids = tf.nn.embedding_lookup(params=self.emb, ids=self.inp)
-        else:
-            embedded_word_ids=self.emb
+        embedded_word_ids = tf.nn.embedding_lookup(params=self.emb, ids=self.inp)
+
         # because especially in images normal dropout doesnt work well because adjacent pixel correlate,
         # dropout over dimensions is helpful instead of arbitrary and indepenend dropout as an usual dropout
         # x= spatial_dropout(emb,keep_prob=0.35)
